@@ -1,4 +1,5 @@
-import sqlite3, datetime, os
+import datetime
+import sqlite3
 from log import log_info
 def add_template(db,name,title_tpl,text_tpl,genre=None):
     with sqlite3.connect(db) as c:
