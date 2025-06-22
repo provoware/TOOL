@@ -26,6 +26,9 @@ class AudioPlayer:
             else: pygame.mixer.music.pause(); self.is_paused=True
             return True
         except Exception as e: return f"Fehler beim Pausieren: {e}"
+    def toggle_pause(self):
+        """Alias for pause() for backwards compatibility."""
+        return self.pause()
     def stop(self):
         try: pygame.mixer.music.stop(); self.is_paused=False; return True
         except Exception as e: return f"Fehler beim Stoppen: {e}"
@@ -38,3 +41,7 @@ class AudioPlayer:
             if pygame.mixer.music.get_busy(): return "Abspielen"
         except: pass
         return "Gestoppt"
+
+    # Backwards compatibility with old GUI
+    def status(self):
+        return self.get_status()
