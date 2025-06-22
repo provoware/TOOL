@@ -105,6 +105,6 @@ def start_gui():
         if ev == '-VOL-':
             player.set_volume(vals['-VOL-'])
             speak(f'Lautstärke {int(vals["-VOL-"]*100)} Prozent')
-        window['-STATUS-'].update(player.status())
+        window['-STATUS-'].update(player.get_status())
 
     window.close()
