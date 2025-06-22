@@ -26,6 +26,13 @@ class AudioPlayer:
             else: pygame.mixer.music.pause(); self.is_paused=True
             return True
         except Exception as e: return f"Fehler beim Pausieren: {e}"
+    def toggle_pause(self):
+        try:
+            if self.is_paused:
+                pygame.mixer.music.unpause(); self.is_paused=False; return True
+            else:
+                return self.pause()
+        except Exception as e: return f"Fehler beim Pausieren: {e}"
     def stop(self):
         try: pygame.mixer.music.stop(); self.is_paused=False; return True
         except Exception as e: return f"Fehler beim Stoppen: {e}"
@@ -33,8 +40,9 @@ class AudioPlayer:
         try: v=max(0,min(1,float(v))); pygame.mixer.music.set_volume(v); self.volume=v; return True
         except Exception as e: return f"Fehler Lautstärke: {e}"
     def get_status(self):
-        if self.is_paused: return "Pause"
+        status="Pause" if self.is_paused else "Gestoppt"
         try:
-            if pygame.mixer.music.get_busy(): return "Abspielen"
+            if pygame.mixer.music.get_busy(): status="Abspielen"
         except: pass
-        return "Gestoppt"
+        if self.current_file: status+=f" ({os.path.basename(self.current_file)})"
+        return status
