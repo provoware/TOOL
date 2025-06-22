@@ -13,3 +13,27 @@ def scan_and_load(gui=None):
             if hasattr(mod,'register_menu') and gui: mod.register_menu(gui)
             log_info(f"Plugin geladen {folder}")
         except Exception as e: log_error("Plugin-Load",e)
+
+
+def install_plugin(zip_file):
+    """Install a plugin from a ZIP archive."""
+    try:
+        with zipfile.ZipFile(zip_file) as z:
+            name = os.path.splitext(os.path.basename(zip_file))[0]
+            dest = os.path.join(PLUGIN_DIR, name)
+            if os.path.isdir(dest):
+                shutil.rmtree(dest)
+            z.extractall(dest)
+        log_info(f'Plugin installed {name}')
+        return True
+    except Exception as e:
+        log_error('Plugin-Install', e)
+        return False
+
+
+def checksum(file_path):
+    h = hashlib.sha256()
+    with open(file_path, 'rb') as f:
+        for chunk in iter(lambda: f.read(4096), b''):
+            h.update(chunk)
+    return h.hexdigest()

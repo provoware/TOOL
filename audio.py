@@ -26,6 +26,10 @@ class AudioPlayer:
             else: pygame.mixer.music.pause(); self.is_paused=True
             return True
         except Exception as e: return f"Fehler beim Pausieren: {e}"
+
+    def toggle_pause(self):
+        """Compatibility wrapper for pause."""
+        return self.pause()
     def stop(self):
         try: pygame.mixer.music.stop(); self.is_paused=False; return True
         except Exception as e: return f"Fehler beim Stoppen: {e}"
@@ -38,3 +42,13 @@ class AudioPlayer:
             if pygame.mixer.music.get_busy(): return "Abspielen"
         except: pass
         return "Gestoppt"
+
+    def status(self):
+        """Compatibility wrapper for get_status."""
+        return self.get_status()
+
+    def set_equalizer(self, _settings):
+        """Placeholder for equalizer functionality."""
+        # pygame.mixer does not support equalizer directly.
+        # This method exists to keep the API stable for future implementations.
+        pass
