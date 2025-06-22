@@ -1,5 +1,6 @@
 
-import PySimpleGUI as sg, os, sys
+import os
+import PySimpleGUI as sg
 from audio import AudioPlayer
 from utils import init_playlist_db, get_playlist, add_to_playlist, remove_from_playlist,     init_song_db
 

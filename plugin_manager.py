@@ -1,4 +1,6 @@
-import importlib.util, os, json, shutil, zipfile, hashlib
+import importlib.util
+import json
+import os
 from log import log_info, log_error
 PLUGIN_DIR='plugins'; os.makedirs(PLUGIN_DIR,exist_ok=True)
 def scan_and_load(gui=None):

@@ -1,6 +1,6 @@
 
-import sqlite3, os
-from log import log_info
+import os
+import sqlite3
 DB='db/songarchiv.sqlite3'; os.makedirs('db',exist_ok=True)
 def get_all_songs(db): 
     with sqlite3.connect(db) as c: 
