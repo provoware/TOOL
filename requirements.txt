@@ -1,4 +1,5 @@
 PySimpleGUI>=5.0.8,<6
+pygame
 ffmpeg-python
 pyenchant
 pyttsx3
