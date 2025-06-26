@@ -21,3 +21,13 @@ Die Datenbanken werden dabei automatisch im Ordner `db` angelegt.
 ## Abhängigkeiten
 
 Siehe `requirements.txt` für alle benötigten Pakete. Wichtig ist vor allem `pygame` für die Wiedergabe und `PySimpleGUI` für die Benutzeroberfläche.
+
+## Tests
+
+Automatische Tests liegen im Verzeichnis `tests`. Sie können mit `pytest` oder über das Skript `selftest.py` gestartet werden:
+
+```bash
+python selftest.py
+```
+
+Falls ein Test fehlschlägt, versucht `selftest.py` automatisch, die Datenbanken zu reparieren und startet die Tests erneut.
