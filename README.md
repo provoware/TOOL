@@ -31,3 +31,5 @@ python selftest.py
 ```
 
 Falls ein Test fehlschlägt, versucht `selftest.py` automatisch, die Datenbanken zu reparieren und startet die Tests erneut.
+
+Weitere Hinweise zur Einrichtung finden Sie in der Datei `ANLEITUNG.md`.
