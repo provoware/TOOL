@@ -38,3 +38,10 @@ class AudioPlayer:
             if pygame.mixer.music.get_busy(): return "Abspielen"
         except: pass
         return "Gestoppt"
+
+    # Added for GUI compatibility
+    def toggle_pause(self):
+        return self.pause()
+
+    def status(self):
+        return self.get_status()
